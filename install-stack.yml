@@ -1,0 +1,16 @@
+- hosts: all
+  roles:
+  - common
+
+- hosts: web
+  vars_files:
+  - group_vars/all
+  roles:
+  - web
+
+- hosts: db
+  vars_files:
+  - group_vars/all
+  - group_vars/tag_ansible_group_dbservers
+  roles:
+  - db

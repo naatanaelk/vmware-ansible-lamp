@@ -1,0 +1,6 @@
+# AWS variables
+
+# Hosts variables
+
+db1_hosts: ""
+web1_hosts: ""

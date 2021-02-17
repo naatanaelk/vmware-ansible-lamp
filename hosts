@@ -1,0 +1,5 @@
+[web]
+web1 ansible_host="{{  web1_hosts  }}" ansible_user=ubuntu ansible_ssh_private_key_file=/home/ubuntu/.ssh/jenkins-master.pem
+
+[db]
+db1 ansible_host="{{  db1_hosts  }}" ansible_user=ubuntu ansible_ssh_private_key_file=/home/ubuntu/.ssh/jenkins-master.pem
