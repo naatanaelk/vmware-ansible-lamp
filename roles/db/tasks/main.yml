@@ -2,7 +2,7 @@
 # tasks file for db
 
 - name: Install MySQL
-  apt:
+  yum:
     name: ['mysql-server', 'mysql-client', 'python3-pymysql', 'libmysqlclient-dev']
     state: latest
     update_cache: yes
@@ -22,7 +22,7 @@
 - name: Copy the root credentials as .my.cnf file
   template: 
     src: root.cnf.j2 
-    dest: /home/ubuntu/.my.cnf 
+    dest: /home/root/.my.cnf 
     mode: 0600
     owner: root
   become: yes
@@ -60,11 +60,11 @@
     host: '%' 
     state: present
 
-- name: Copy the configuration file (my.cnf)
-  template:
-    src: my.cnf.j2 
-    dest: /etc/mysql/mysql.conf.d/mysqld.cnf
-  become: yes
+#- name: Copy the configuration file (my.cnf)
+#  template:
+#    src: my.cnf.j2 
+#    dest: /etc/mysql/mysql.conf.d/mysqld.cnf
+#  become: yes
 
 - name: Restart DB to Allow Remote Connection
   service:

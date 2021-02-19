@@ -1,0 +1,25 @@
+---
+# Tasks file for configuring network on ubuntu 18.04
+- name: Remove VMware network interfaces.
+  file:
+    path: /etc/network/interfaces
+    state: absent
+  become: yes
+
+- name: Remove network interfaces before VMware customization.
+  file:
+    path: /etc/network/interfaces.BeforeVMwareCustomization
+    state: absent
+  become: yes
+
+- name: Remove network.d directory.
+  file:
+    path: /etc/network/interfaces.d
+    state: absent
+  become: yes
+
+- name: Create new network netplan.
+  template:
+    src: ens160-netplan.yml.j2
+    dest: /etc/netplan/01-network-manager-all.yml
+  become: yes

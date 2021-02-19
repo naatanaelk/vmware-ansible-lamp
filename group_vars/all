@@ -1,6 +1,20 @@
-# AWS variables
+# VMWare variables
+
+vcenter_hostname: ""
+vcenter_username: ""
+vcenter_password: ""
+datacenter_name: HPE-DCSite
+datastore_name: DC_SVT_01
+cluster_name: SVT-Cluster01
+folder_path: "/Testing_01/AnsibleLab/"
+template_name: Ubuntu_18.04_Template
 
 # Hosts variables
 
-db1_hosts: ""
-web1_hosts: ""
+db1_hosts: "10.8.135.170"
+web1_hosts: "10.8.135.171"
+
+# Network variable
+
+gateway_ip: "10.8.135.1"
+dns_ip: "10.8.130.71"

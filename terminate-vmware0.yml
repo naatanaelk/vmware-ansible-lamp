@@ -11,7 +11,8 @@
       validate_certs: False
       folder: "{{ folder_path }}"
       name: web
-      state: poweredon
+      state: absent
+      force: yes
       template: "{{ template_name }}"
       datacenter: "{{ datacenter_name }}"
       datastore: "{{ datastore_name }}"
@@ -20,9 +21,9 @@
       - name: VM Network
         ip: "{{ web1_hosts }}"
         netmask: 255.255.255.0
-        gateway: "{{ gateway_ip }}"
+        gateway: 10.8.135.1
         type: static
-        dns_servers: "{{ dns_ip }}"
+        dns_servers: 10.8.130.71
       customization:
         hostname: "web1"
         dns_servers: 10.8.130.71
@@ -36,7 +37,8 @@
       validate_certs: False
       folder: "{{ folder_path }}" 
       name: db     
-      state: poweredon
+      state: absent
+      force: yes
       template: "{{ template_name }}"
       datacenter: "{{ datacenter_name }}"
       datastore: "{{ datastore_name }}"
@@ -45,7 +47,8 @@
       - name: VM Network
         ip: "{{ db1_hosts }}"
         netmask: "255.255.255.0"
-        gateway: "{{ gateway_ip }}"
+        gateway: "10.8.135.1"
         device_type: vmxnet3
-        dns_servers: "{{ dns_ip }}"
+        dns_servers:
+        - 10.8.130.71
       wait_for_ip_address: no

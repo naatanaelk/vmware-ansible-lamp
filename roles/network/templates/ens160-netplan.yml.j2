@@ -1,0 +1,11 @@
+network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    ens160:
+     link-local: []
+     dhcp4: no
+     addresses: ["{{ web1_hosts }}"/24]
+     gateway4: "{{ gateway_ip }}"
+     nameservers:
+       addresses: ["{{ dns_ip }}"]

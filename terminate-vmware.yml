@@ -1,0 +1,22 @@
+---
+- name: Delete Web & DB VM.
+  hosts: localhost
+  gather_facts: no
+  tasks: 
+  - name: Delete web instance from disk.
+    vmware_guest:
+      hostname: "{{ vcenter_hostname }}"
+      username: "{{ vcenter_username }}"
+      password: "{{ vcenter_password }}"
+      name: web
+      delete_from_inventory: true
+      state: absent
+
+  - name: Delete db instance.                    
+    vmware_guest:
+      hostname: "{{ vcenter_hostname }}"
+      username: "{{ vcenter_username }}"
+      password: "{{ vcenter_password }}
+      name: db
+      delete_from_inventory: true     
+      state: absent

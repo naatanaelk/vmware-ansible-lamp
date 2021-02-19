@@ -1,13 +1,14 @@
 ---
 # tasks file for common
 - name: Update all packages
-  apt:
+  yum:
     name: '*'
     state: latest
     update_cache: yes
   become: yes
 - name: Install PHP, PHP mod, & git.
-  apt:
-    name: ['php', 'libapache2-mod-php', 'php-curl', 'php-xml', 'php-mysql', 'git']
+  yum:
+    name: ['epel-release', 'php', 'libapache2-mod-php', 'php-curl', 'php-xml', 'php-mysql', 'git']
     state: present
+    update_cache: yes
   become: yes
