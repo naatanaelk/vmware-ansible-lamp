@@ -1,22 +1,54 @@
 ---
-- name: Delete Web & DB VM.
+- name: Terminate template VM.
   hosts: localhost
   gather_facts: no
   tasks: 
-  - name: Delete web instance from disk.
+  - name: Terminate web instance.
     vmware_guest:
       hostname: "{{ vcenter_hostname }}"
       username: "{{ vcenter_username }}"
       password: "{{ vcenter_password }}"
+      validate_certs: False
+      folder: "{{ folder_path }}"
       name: web
-      delete_from_inventory: true
       state: absent
+      force: yes
+      template: "{{ template_name }}"
+      datacenter: "{{ datacenter_name }}"
+      datastore: "{{ datastore_name }}"
+      cluster: "{{ cluster_name }}"
+      networks:
+      - name: VM Network
+        ip: "{{ web1_hosts }}"
+        netmask: 255.255.255.0
+        gateway: 10.8.135.1
+        type: static
+        dns_servers: 10.8.130.71
+      customization:
+        hostname: "web1"
+        dns_servers: 10.8.130.71
+      wait_for_ip_address: no
 
-  - name: Delete db instance.                    
+  - name: Terminate db instance.                    
     vmware_guest:
       hostname: "{{ vcenter_hostname }}"
       username: "{{ vcenter_username }}"
-      password: "{{ vcenter_password }}
-      name: db
-      delete_from_inventory: true     
+      password: "{{ vcenter_password }}"
+      validate_certs: False
+      folder: "{{ folder_path }}" 
+      name: db     
       state: absent
+      force: yes
+      template: "{{ template_name }}"
+      datacenter: "{{ datacenter_name }}"
+      datastore: "{{ datastore_name }}"
+      cluster: "{{ cluster_name }}"
+      networks:
+      - name: VM Network
+        ip: "{{ db1_hosts }}"
+        netmask: "255.255.255.0"
+        gateway: "10.8.135.1"
+        device_type: vmxnet3
+        dns_servers:
+        - 10.8.130.71
+      wait_for_ip_address: no

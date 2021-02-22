@@ -1,11 +1,11 @@
 network:
   version: 2
-  renderer: networkd
+  renderer: NetworkManager
   ethernets:
     ens160:
      link-local: []
      dhcp4: no
-     addresses: ["{{ web1_hosts }}"/24]
+     addresses: [{{ ansible_host }}/24]
      gateway4: "{{ gateway_ip }}"
      nameservers:
-       addresses: ["{{ dns_ip }}"]
+       addresses: [{{ dns_ip }}]

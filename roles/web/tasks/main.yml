@@ -1,7 +1,7 @@
 ---
 # tasks file for web
 - name: Install Apache & MySQL Client
-  yum:
+  apt:
     name: ['apache2', 'mysql-client']
     state: present
     update_cache: yes

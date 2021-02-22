@@ -21,5 +21,29 @@
 - name: Create new network netplan.
   template:
     src: ens160-netplan.yml.j2
-    dest: /etc/netplan/01-network-manager-all.yml
+    dest: /etc/netplan/01-network-manager-all.yaml
+  become: yes
+
+- name: Restart Networking.
+  service:
+    name: networking
+    state: restarted
+  become: yes
+
+- name: Apply Netplan
+  command: sudo netplan apply
+  async: 45
+  poll: 0
+  become: yes
+
+- name: Delete Netplan to avoid error.
+  command: sudo nmcli connection delete netplan-ens160
+  async: 45
+  poll: 0
+  become: yes
+
+- name: Apply Netplan
+  command: sudo netplan apply
+  async: 45
+  poll: 0
   become: yes

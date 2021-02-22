@@ -1,3 +1,5 @@
-- hosts: web1
+- hosts: all
+  gather_facts: yes
   roles:
   - network
+  - common
