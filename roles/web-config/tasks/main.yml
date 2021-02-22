@@ -24,7 +24,7 @@
 
 - name: Copy the rest of the necessary files.
   copy:
-    src: /home/ubuntu/aws-lamp-frontend-backend/uploads/
+    src: /home/ubuntu/vmware-ansible-lamp/uploads/
     dest: /var/www/html/uploads/
   become: yes
 
