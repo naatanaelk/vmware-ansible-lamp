@@ -4,6 +4,7 @@ This playbook is meant to provision, install, and deploy a simple LAMP stack web
 
 There are two playbooks you need to run:
 - provision-vmware.yml
+- configure-network.yml
 - install-stack.yml
 
 And one optional playbook you can run:
@@ -28,6 +29,16 @@ To install Ansible in ubuntu 20.04 is pretty simple:
 sudo apt-get update
 sudo apt-get install ansible
 ```
+
+Then, you need to install Pyvmomi, PyMySQL, and MySQLClient:
+
+```
+sudo apt-get install python3-pip
+sudo pip3 install pyvmomi
+sudo apt-get install python3-pymysql
+sudo apt-get install mysql-client
+```
+
 
 Check the installation by issuing:
 
