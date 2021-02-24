@@ -11,8 +11,8 @@ template_name: Ubuntu_18.04_Template
 
 # Hosts variables
 
-db1_hosts: "10.8.135.170"
-web1_hosts: "10.8.135.171"
+db1_hosts: "10.8.135.169"
+web1_hosts: "10.8.135.170"
 
 # Network variable
 
